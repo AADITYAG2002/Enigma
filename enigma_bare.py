@@ -6,9 +6,9 @@ class Enigma:
         shift_2 = False
         shift_3 = False      
 
-        rotor_1 = Rotor(ROTOR_1,r3)
+        rotor_1 = Rotor(ROTOR_1,r1)
         rotor_2 = Rotor(ROTOR_2,r2)
-        rotor_3 = Rotor(ROTOR_3,r1)
+        rotor_3 = Rotor(ROTOR_3,r3)
 
         PLUGS = plugs
         PLUGS = [] if PLUGS == '' else PLUGS.split()
