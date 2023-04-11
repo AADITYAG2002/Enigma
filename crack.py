@@ -5,6 +5,7 @@ import enigma_bare
 enc_text = "WNRLDXK"
 pln_text = "AADITYA"
 plugs = ""
+initial_rotors = [0,0,0]
 rotors = [0,0,0]
 
 def check_plugs(plugs):
@@ -34,9 +35,12 @@ while i < len(enc_text):
     if converted_letter != pln_text[i]:
         plugs += converted_letter + pln_text[i] + ' '
         if check_plugs(plugs):
+            rotor_shift(rotors)
             print(rotors,plugs) 
             i += 1
         else : 
+            rotor_shift(initial_rotors)
+            rotors = initial_rotors
             print(rotors, plugs)
             plugs = ''
 # TODO: add the plug settings
