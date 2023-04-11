@@ -138,8 +138,8 @@ class Enigma:
 
                     light = ord(enc_8)-ord('A')
                     
-                    # print(input,enc_0,enc_1,enc_2,enc_3,enc_4,enc_5,enc_6,enc_7,enc_8)
-                    print(enc_8,end='')
+                    print(input,enc_0,enc_7,enc_8)
+                    # print(enc_8,end='')
                     LETTERS[light].draw(True)
 
                     shift_2 = True if rotor_1.value == 25 else False

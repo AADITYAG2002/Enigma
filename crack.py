@@ -1,6 +1,7 @@
 import enigma_bare
 
-# 25 4 1 || ka ti || aaditya => WNRLDXK
+# 25 4 1 || ka ti || AADITYA => GSTQVCQ
+# 0 2 23 || ad it || VINNI => SQRKW
 
 enc_text = "WNRLDXK"
 pln_text = "AADITYA"
@@ -39,12 +40,11 @@ while i < len(enc_text):
             print(rotors,plugs) 
             i += 1
         else : 
-            rotor_shift(initial_rotors)
             rotors = initial_rotors
             print(rotors, plugs)
             plugs = ''
-# TODO: add the plug settings
             i = 0
+            # add plugs set: such that all letrs minus the starting one
 
 print("plugs: ",plugs)
 print(rotors)
