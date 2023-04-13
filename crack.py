@@ -2,13 +2,12 @@ import enigma_bare
 
 # 25 4 1 || ka ti || AADITYA => GSTQVCQ
 # 0 2 23 || ad it || VINNI => SQRKW
-
-enc_text = "WNRLDXK"
-pln_text = "AADITYA"
+plug_set = " ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+enc_text = "SQRKW"
+pln_text = "VINNI"
 plugs = ""
 initial_rotors = [0,0,0]
 rotors = [0,0,0]
-
 def check_plugs(plugs):
     plugs = plugs.split()
     for i in range(len(plugs)):
@@ -31,20 +30,32 @@ def rotor_shift(rotors):
 
 
 i = 0
-while i < len(enc_text):
-    converted_letter = enigma_bare.Enigma.encrypt(rotors[0],rotors[1],rotors[2],plugs,enc_text[i])
-    if converted_letter != pln_text[i]:
-        plugs += converted_letter + pln_text[i] + ' '
-        if check_plugs(plugs):
-            rotor_shift(rotors)
-            print(rotors,plugs) 
-            i += 1
-        else : 
-            rotors = initial_rotors
-            print(rotors, plugs)
-            plugs = ''
-            i = 0
-            # add plugs set: such that all letrs minus the starting one
 
-print("plugs: ",plugs)
-print(rotors)
+for i in range(len(initial_rotors)):
+    rotors[i] = initial_rotors[i]
+
+
+for enc in enc_text:
+    for p in plug_set:
+        if p != ' ':
+            plugs += enc + p + ' '
+        while i < len(enc_text):
+            converted_letter = enigma_bare.Enigma.encrypt(rotors[0],rotors[1],rotors[2],plugs,enc_text[i])
+            if converted_letter != pln_text[i]:
+                plugs += converted_letter + pln_text[i] + ' '
+            if check_plugs(plugs):
+                rotor_shift(rotors)
+                print(rotors,plugs) 
+                i += 1
+            else : 
+                for i in range(len(initial_rotors)):
+                    rotors[i] = initial_rotors[i]
+                print(initial_rotors, plugs)
+                plugs = ''
+                i = 0
+                break
+        else:
+            break
+            
+print("\nplugs: ",plugs)
+print(initial_rotors)

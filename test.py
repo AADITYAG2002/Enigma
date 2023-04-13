@@ -1,10 +1,9 @@
-class MyClass:
-    def __init__(self):
-       self.value = 60
+txt = ""
 
-    def __new__(cls):
-        return cls
+enc_text = "WNRLDXK"
 
-obj = MyClass()
-print(obj)
-# Output: 42
+plug_set = " ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+for t in enc_text:
+    for s in plug_set:
+        if s != ' ':
+            txt += t + s + ' '
