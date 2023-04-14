@@ -21,9 +21,6 @@ class Enigma:
             elif pair[1] == letter:
                 enc_0 = pair[0]
                 break
-            else:
-                enc_0 = letter
-                break
         else:
             enc_0 = letter
 
@@ -40,9 +37,6 @@ class Enigma:
                 break
             elif pair[1] == enc_7:
                 enc_8 = pair[0]
-                break
-            else:
-                enc_8 = enc_7
                 break
         else:
             enc_8 = enc_7

@@ -1,13 +1,14 @@
 import enigma_bare
 
-# 25 4 1 || ka ti || AADITYA => GSTQVCQ
+# 25 4 1 || ka ti || AADITYA => GSINYCQ
 # 0 2 23 || ad it || VINNI => SQRKW
 plug_set = " ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-enc_text = "SQRKW"
-pln_text = "VINNI"
+enc_text = "GSTQVCQ"
+pln_text = "AADITYA"
 plugs = ""
-initial_rotors = [0,0,0]
+initial_rotors = [25,4,1]
 rotors = [0,0,0]
+
 def check_plugs(plugs):
     plugs = plugs.split()
     for i in range(len(plugs)):
@@ -29,11 +30,15 @@ def rotor_shift(rotors):
         rotors[0] %= 26
 
 
-i = 0
+# for t in pln_text:
+#     print(enigma_bare.Enigma.encrypt(rotors[0],rotors[1],rotors[2],plugs,t),end='')
+#     rotor_shift(rotors)
+
 
 for i in range(len(initial_rotors)):
     rotors[i] = initial_rotors[i]
 
+i = 0
 
 for enc in enc_text:
     for p in plug_set:
@@ -50,12 +55,13 @@ for enc in enc_text:
             else : 
                 for i in range(len(initial_rotors)):
                     rotors[i] = initial_rotors[i]
-                print(initial_rotors, plugs)
                 plugs = ''
                 i = 0
                 break
         else:
+            print(initial_rotors, plugs)
             break
-            
-print("\nplugs: ",plugs)
-print(initial_rotors)
+    else:
+        rotor_shift(initial_rotors)
+        for i in range(len(initial_rotors)):
+            rotors[i] = initial_rotors[i]

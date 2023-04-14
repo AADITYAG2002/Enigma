@@ -110,9 +110,6 @@ class Enigma:
                         elif pair[1].letter == input:
                             enc_0 = pair[0].letter
                             break
-                        else:
-                            enc_0 = input
-                            break
                     else:
                         enc_0 = input
 
@@ -129,9 +126,6 @@ class Enigma:
                             break
                         elif pair[1].letter == enc_7:
                             enc_8 = pair[0].letter
-                            break
-                        else:
-                            enc_8 = enc_7
                             break
                     else:
                         enc_8 = enc_7
